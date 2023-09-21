@@ -1,5 +1,4 @@
-import { PokemonResponse, SimplePokemon } from "@/app/pokemons";
-import Image from "next/image";
+import { PokemonGrid, PokemonResponse, SimplePokemon } from "@/pokemons";
 
 const getPokemons = async (
   limit = 20,
@@ -13,6 +12,7 @@ const getPokemons = async (
     id: pokemon.url.split("/").at(-2)!,
     name: pokemon.name,
   }));
+  // throw new Error("El error de horrores");
   return pokemons;
 };
 
@@ -21,20 +21,8 @@ export default async function PokemonsPage() {
   // console.log(pokemons);
   return (
     <div className="flex flex-col">
-      <div className="flex flex-wrap gap-10 items-center justify-center">
-        {pokemons.map((pokemon) => (
-          <>
-            <Image
-              key={pokemon.id}
-              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon.id}.svg`}
-              width={100}
-              height={100}
-              alt={pokemon.name}
-            />
-            {/* <p>{pokemon.name}</p> */}
-          </>
-        ))}
-      </div>
+      <span className="text-5xl my-2">Listado de Pokemons <small>Estáticos</small></span>
+      <PokemonGrid pokemons={pokemons} />
     </div>
   );
 }
