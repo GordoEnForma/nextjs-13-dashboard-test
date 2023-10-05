@@ -1,4 +1,9 @@
+import { Metadata } from "next";
 import { PokemonGrid, PokemonResponse, SimplePokemon } from "@/pokemons";
+
+export const metadata: Metadata = {
+  title: "Listado de Pokemons",
+};
 
 const getPokemons = async (
   limit = 20,
@@ -21,7 +26,9 @@ export default async function PokemonsPage() {
   // console.log(pokemons);
   return (
     <div className="flex flex-col">
-      <span className="text-5xl my-2">Listado de Pokemons <small>Estáticos</small></span>
+      <span className="text-5xl my-2">
+        Listado de Pokemons <small>Estáticos</small>
+      </span>
       <PokemonGrid pokemons={pokemons} />
     </div>
   );
